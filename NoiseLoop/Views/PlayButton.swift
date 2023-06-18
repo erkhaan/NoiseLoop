@@ -39,7 +39,7 @@ final class PlayButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Methods
+    // MARK: - Init setup
     
     private func setupButton() {
         self.configuration = customConfiguration

@@ -16,7 +16,7 @@ final class PlayButton: UIButton {
         case pause = "Pause"
     }
     private let title = Titles.play
-    private var isPlaying = false
+    var isPlaying = false
     private let customConfiguration: UIButton.Configuration = {
         var configuration = UIButton.Configuration.filled()
         configuration.cornerStyle = .capsule

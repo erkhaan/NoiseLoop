@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import AVFAudio
 
 final class PlayerViewController: UIViewController {
     
@@ -14,8 +15,13 @@ final class PlayerViewController: UIViewController {
     
     private let playButton = PlayButton()
     
+    // MARK: - Properties
+    
+    private let player = Player()
+    private var currentFile = AudioFilePath.rain
+    
     // MARK: - VC lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -25,11 +31,11 @@ final class PlayerViewController: UIViewController {
     // MARK: - Initial setup
     
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemIndigo
         view.addSubview(playButton)
         playButton.addTarget(
             self,
-            action: #selector(buttonTapped(_:)),
+            action: #selector(buttonTapped),
             for: .touchUpInside)
     }
     
@@ -41,9 +47,24 @@ final class PlayerViewController: UIViewController {
         }
     }
     
+    // MARK: - Audio
+    
+    private func playAudio() {
+        player.playAudio(file: currentFile.rawValue)
+    }
+    
+    private func pauseAudio() {
+        player.pause()
+    }
+    
     // MARK: - Button action
     
-    @objc private func buttonTapped(_ button: UIButton) {
+    @objc private func buttonTapped() {
+        if playButton.isPlaying {
+            pauseAudio()
+        } else {
+            playAudio()
+        }
         playButton.changeState()
     }
 }

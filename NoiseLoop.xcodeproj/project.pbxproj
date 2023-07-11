@@ -64,12 +64,12 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		CE23BEA52A40B7D0000623F2 /* Managers */ = {
+		CE23BEA52A40B7D0000623F2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				CE23BEA62A40B7ED000623F2 /* Player.swift */,
 			);
-			path = Managers;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CE23BEA82A40B9C6000623F2 /* Models */ = {
@@ -113,7 +113,7 @@
 				CE23BEA82A40B9C6000623F2 /* Models */,
 				CE23BEA32A3F5C7B000623F2 /* Controllers */,
 				CEB7BE762A2518A300B17BBB /* Views */,
-				CE23BEA52A40B7D0000623F2 /* Managers */,
+				CE23BEA52A40B7D0000623F2 /* Services */,
 			);
 			path = NoiseLoop;
 			sourceTree = "<group>";

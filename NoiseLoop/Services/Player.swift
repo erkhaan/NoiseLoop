@@ -7,18 +7,21 @@
 
 import UIKit
 import AVFAudio
+import MediaPlayer
 
 final class Player: NSObject, AVAudioPlayerDelegate {
     
     // MARK: - Properties
     
+    weak var delegate: RemoteControlDelegate?
     var player: AVAudioPlayer!
+    private var filePath = AudioFilePath.rain
     
     // MARK: - Methods
     
-    func playAudio(file: String) {
+    func playAudio() {
         guard let fileUrl = Bundle.main.url(
-            forResource: file,
+            forResource: filePath.rawValue,
             withExtension: "mp3"
         ) else {
             return
@@ -37,5 +40,53 @@ final class Player: NSObject, AVAudioPlayerDelegate {
     
     func pause() {
         player.pause()
+    }
+    
+    func configure(delegate: RemoteControlDelegate) {
+        self.delegate = delegate
+        setupRemoteControl()
+    }
+    
+    private func setupRemoteControl() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.addTarget(
+            self,
+            action: #selector(doPlay))
+        commandCenter.pauseCommand.addTarget(
+            self,
+            action: #selector(doPause))
+        commandCenter.togglePlayPauseCommand.addTarget(
+            self,
+            action: #selector(doPlayPause))
+    }
+    
+    @objc func doPlayPause(
+        _ event: MPRemoteCommandEvent
+    ) -> MPRemoteCommandHandlerStatus {
+        guard let player = player else { return .commandFailed }
+        if player.isPlaying {
+            pause()
+            delegate?.remotePause()
+        } else {
+            playAudio()
+            delegate?.remotePlay()
+        }
+        return .success
+    }
+    
+    @objc func doPlay(
+        _ event: MPRemoteCommandEvent
+    ) -> MPRemoteCommandHandlerStatus {
+        playAudio()
+        delegate?.remotePlay()
+        return .success
+    }
+    
+    @objc func doPause(
+        _ event: MPRemoteCommandEvent
+    ) -> MPRemoteCommandHandlerStatus {
+        pause()
+        delegate?.remotePause()
+        return .success
     }
 }

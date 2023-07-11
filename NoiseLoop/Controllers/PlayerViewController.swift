@@ -18,7 +18,6 @@ final class PlayerViewController: UIViewController {
     // MARK: - Properties
     
     private let player = Player()
-    private var currentFile = AudioFilePath.rain
     
     // MARK: - VC lifecycle
     
@@ -26,6 +25,7 @@ final class PlayerViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupLayout()
+        setupPlayer()
     }
     
     // MARK: - Initial setup
@@ -47,10 +47,15 @@ final class PlayerViewController: UIViewController {
         }
     }
     
+    
+    private func setupPlayer() {
+        player.configure(delegate: self)
+    }
+    
     // MARK: - Audio
     
     private func playAudio() {
-        player.playAudio(file: currentFile.rawValue)
+        player.playAudio()
     }
     
     private func pauseAudio() {
@@ -69,3 +74,12 @@ final class PlayerViewController: UIViewController {
     }
 }
 
+extension PlayerViewController: RemoteControlDelegate {
+    func remotePlay() {
+        buttonTapped()
+    }
+    
+    func remotePause() {
+        buttonTapped()
+    }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE052F622A5DBE580053CB3A /* AudioSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052F612A5DBE580053CB3A /* AudioSessionService.swift */; };
 		CE23BEA72A40B7ED000623F2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23BEA62A40B7ED000623F2 /* Player.swift */; };
 		CE23BEAA2A40B9E9000623F2 /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23BEA92A40B9E9000623F2 /* AudioFile.swift */; };
 		CE23BEAF2A40BCA0000623F2 /* rain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE23BEAE2A40BCA0000623F2 /* rain.mp3 */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE052F612A5DBE580053CB3A /* AudioSessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionService.swift; sourceTree = "<group>"; };
 		CE23BEA62A40B7ED000623F2 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CE23BEA92A40B9E9000623F2 /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
 		CE23BEAE2A40BCA0000623F2 /* rain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rain.mp3; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				CE23BEA62A40B7ED000623F2 /* Player.swift */,
+				CE052F612A5DBE580053CB3A /* AudioSessionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				CEB7BE642A24F2C800B17BBB /* PlayerViewController.swift in Sources */,
 				CEB7BE782A2518B800B17BBB /* PlayButton.swift in Sources */,
 				CE23BEAA2A40B9E9000623F2 /* AudioFile.swift in Sources */,
+				CE052F622A5DBE580053CB3A /* AudioSessionService.swift in Sources */,
 				CEB7BE602A24F2C800B17BBB /* AppDelegate.swift in Sources */,
 				CE23BEA72A40B7ED000623F2 /* Player.swift in Sources */,
 				CEB7BE622A24F2C800B17BBB /* SceneDelegate.swift in Sources */,
